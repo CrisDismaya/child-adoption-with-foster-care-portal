@@ -1,0 +1,31 @@
+DSWD ADMIN
+- 
+-
+
+FOSTER CARE ADMIN
+- kapag nag submit na ng foster parent tas pag ni-view yung acc. at ang add na naman ng another foster child nag o-automatic adopted yung status nya. possible ba sir na malagyan ng drop-down menu sa tapat ng name ng bata if nag add na nanaman ng bata.kasi sir nag kakaprobelema tayo kapag nag aadd ng panibagong bata nagiging adopted sya pero temporary lang dapat,
+
+- pag upload ng news, iba yung date and time
+
+- pag ginawang inactive yung acc ng foster parent nakaka log in parin, dapat hindi na. 
+
+
+HOME PAGE
+-sir bakit yung home button sa home page ay nakahigh light na hindi ko hinohover yung mouse
+ 
+- yung picture okay na yung icon na ginamit kanina, yung ginamit nyong icon nung nag update po kayo sakin nung umaga. icon ng foster home
+
+-Sir dun po sa part sa home page yung part na "Follow us on" dapat po ang nakalagay dun is "Follow us on our Facebook Page". Tapos di na po siya "Sign in with Facebook" dapat. Magiging "Adoption and Foster Care POrtal(https://web.facebook.com/Adoption-and-Foster-Care-Portal-1992068864434760/?modal=admin_todo_tour)" yan po dapat yung nakalaghay tapos pag ni click, automatic directed na agad duin sa fb page , tas pataganggal nalang po nung ibang social media sites, fb lang po matitira. tsaka po search nalang po ang nakalagay sa sa heading, given na "Follow us on fb nalang ang nandun.
+
+- Sa video section, DSWD po ang mag a-up ng mga video na related sa Adoption and Foster Care.
+
+- Sir suggestion lang po ito, pede po bang maipatong yung log in form sa may banner tas bababan nalang po yung opasity nung banner para ma showcase yung log in form. suggestion lang naman po ito.
+
+- Masyadong malaki sir yung banner sa home page
+
+My Account
+- HIndi yung picture na  ni upload yung nalbas kapag nag log in si foster parent.
+
+*yung log in sir for admins kung pede po sana medyo lagayan ng design kasi medyo dull daw po tignan yung part na yun.
+
+* sir pede po ba lagyan ng design din yung admin panel kasi medyo dull din daw po, kasi puti daw po hyung background puti parin yung panel.

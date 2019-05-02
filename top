@@ -1,0 +1,577 @@
+[33mcommit 3b1201788c7b28a46fefe4c305993e4ead2d9261[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m)[m
+Author: Cris Dismaya <dismaya.marcelino20@gmail.com>
+Date:   Wed May 1 20:51:27 2019 +0800
+
+    add md5 database
+
+[1mdiff --git a/database/db_posterecare_md5.sql b/database/db_posterecare_md5.sql[m
+[1mnew file mode 100644[m
+[1mindex 0000000..2fdaa22[m
+[1m--- /dev/null[m
+[1m+++ b/database/db_posterecare_md5.sql[m
+[36m@@ -0,0 +1,565 @@[m
+[32m+[m[32m-- phpMyAdmin SQL Dump[m
+[32m+[m[32m-- version 4.8.3[m
+[32m+[m[32m-- https://www.phpmyadmin.net/[m
+[32m+[m[32m--[m
+[32m+[m[32m-- Host: 127.0.0.1[m
+[32m+[m[32m-- Generation Time: May 01, 2019 at 09:18 AM[m
+[32m+[m[32m-- Server version: 10.1.36-MariaDB[m
+[32m+[m[32m-- PHP Version: 7.2.10[m
+[32m+[m
+[32m+[m[32mSET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";[m
+[32m+[m[32mSET AUTOCOMMIT = 0;[m
+[32m+[m[32mSTART TRANSACTION;[m
+[32m+[m[32mSET time_zone = "+00:00";[m
+[32m+[m
+[32m+[m
+[32m+[m[32m/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;[m
+[32m+[m[32m/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;[m
+[32m+[m[32m/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;[m
+[32m+[m[32m/*!40101 SET NAMES utf8mb4 */;[m
+[32m+[m
+[32m+[m[32m--[m
+[32m+[m[32m-- Database: `db_posterecare_md5`[m
+[32m+[m[32m--[m
+[32m+[m
+[32m+[m[32m-- --------------------------------------------------------[m
+[32m+[m
+[32m+[m[32m--[m
+[32m+[m[32m-- Table structure for table `children`[m
+[32m+[m[32m--[m
+[32m+[m
+[32m+[m[32mCREATE TABLE `children` ([m
+[32m+[m[32m  `childrenId` int(11) NOT NULL,[m
+[32m+[m[32m  `chFosterhomeId` int(11) NOT NULL,[m
+[32m+[m[32m  `chPhoto` varchar(150) NOT NULL,[m
+[32m+[m[32m  `chFname` varchar(150) NOT NULL,[m
+[32m+[m[32m  `chMname` varchar(150) NOT NULL,[m
+[32m+[m[32m  `chLname` varchar(150) NOT NULL,[m
+[32m+[m[32m  `chAge` int(11) NOT NULL,[m
+[32m+[m[32m  `chBirthday` date NOT NULL,[m
+[32m+[m[32m  `chPlace` varchar(200) NOT NULL,[m
+[32m+[m[32m  `chGender` int(11) NOT NULL,[m
+[32m+[m[32m  `chNationality` varchar(100) NOT NULL,[m
+[32m+[m[32m  `chStatus` int(11) NOT NULL,[m
+[32m+[m[32m  `chAddress` text NOT NULL,[m
+[32m+[m[32m  `chDescription` text NOT NULL,[m
+[32m+[m[32m  `chHieght` text NOT NULL,[m
+[32m+[m[32m  `chWeight` text NOT NULL,[m
+[32m+[m[32m  `chHobbies` text NOT NULL,[m
+[32m+[m[32m  `chChildAdopt` int(11) NOT NULL,[m
+[32m+[m[32m  `chCreated` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP[m
+[32m+[m[32m) ENGINE=InnoDB DEFAULT CHARSET=latin1;[m
+[32m+[m
+[32m+[m[32m-- --------------------------------------------------------[m
+[32m+[m
+[32m+[m[32m--[m
+[32m+[m[32m-- Table structure for table `children_adopt_by_parent`[m
+[32m+[m[32m--[m
+[32m+[m
+[32m+[m[32mCREATE TABLE `children_adopt_by_parent` ([m
+[32m+[m[32m  `adopt_id` int(11) NOT NULL,[m
+[32m+[m[32m  `adopt_parent_id` int(11) NOT NULL,[m
+[32m+[m[32m  `adopt_children_id` int(11) NOT NULL,[m
+[32m+[m[32m  `adopt_children_name` text NOT NULL,[m
+[32m+[m[32m  `adopt_children_bday` text NOT NULL,[m
+[32m+[m[32m  `adopt_children_status` int(11) NOT NULL,[m
+[32m+[m[32m  `adopt_created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP[m
+[32m+[m[32m) ENGINE=InnoDB DEFAULT CHARSET=latin1;[m
+[32m+[m
+[32m+[m[32m-- --------------------------------------------------------[m
+[32m+[m
+[32m+[m[32m--[m
+[32m+[m[32m-- Table structure for table `childstatus`[m
+[32m+[m[32m--[m
+[32m+[m
+[32m+[m[32mCREATE TABLE `childstatus` ([m
+[32m+[m[32m  `childstatusId` int(11) NOT NULL,[m
+[32m+[m[32m  `csName` varchar(100) NOT NULL,[m
+[32m+[m[32m  `csCreated` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP[m
+[32m+[m[32m) ENGINE=InnoDB DEFAULT CHARSET=latin1;[m
+[32m+[m
+[32m+[m[32m--[m
+[32m+[m[32m-- Dumping data for table `childstatus`[m
+[32m+[m[32m--[m
+[32m+[m
+[32m+[m[32mINSERT INTO `childstatus` (`childstatusId`, `csName`, `csCreated`) VALUES[m
+[32m+[m[32m(1, 'Possible Adoptees', '2019-03-13 10:47:12'),[m
+[32m+[m[32m(2, 'Temporary', '2019-03-13 10:47:12'),[m
+[32m+[m[32m(3, 'Adopted', '2019-03-13 10:47:12'),[m
+[32m+[m[32m(4, 'Children under foster care', '2019-03-13 10:47:12');[m
+[32m+[m
+[32m+[m[32m-- --------------------------------------------------------[m
+[32m+[m
+[32m+[m[32m--[m
+[32m+[m[32m-- Table structure for table `credentials`[m
+[32m+[m[32m--[m
+[32m+[m
+[32m+[m[32mCREATE TABLE `credentials` ([m
+[32m+[m[32m  `credenId` int(11) NOT NULL,[m
+[32m+[m[32m  `credenAnyid` int(11) NOT NULL,[m
+[32m+[m[32m  `credenUser` varchar(200) NOT NULL,[m
+[32m+[m[32m  `credenPass` text NOT NULL,[m
+[32m+[m[32m  `credenLevel` int(11) NOT NULL,[m
+[32m+[m[32m  `crendeStatus` int(11) NOT NULL,[m
+[32m+[m[32m  `credenCreated` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP[m
+[32m+[m[32m) ENGINE=InnoDB DEFAULT CHARSET=latin1;[m
+[32m+[m
+[32m+[m[32m--[m
+[32m+[m[32m-- Dumping data for table `credentials`[m
+[32m+[m[32m--[m
+[32m+[m
+[32m+[m[32mINSERT INTO `credentials` (`credenId`, `credenAnyid`, `credenUser`, `credenPass`, `credenLevel`, `crendeStatus`, `credenCreated`) VALUES[m
+[32m+[m[32m(1, 1, 'dswd', '91d621e7eb5bb2cd30510f4d059ff304', 1, 0, '2019-04-25 10:48:18');[m
+[32m+[m
+[32m+[m[32m-- --------------------------------------------------------[m
+[32m+[m
+[32m+[m[32m--[m
+[32m+[m[32m-- Table structure for table `district`[m
+[32m+[m[32m--[m
+[32m+[m
+[32m+[m[32mCREATE TABLE `district` ([m
+[32m+[m[32m  `disId` int(11) NOT NULL,[m
+[32m+[m[32m  `disName` varchar(50) NOT NULL,[m
+[32m+[m[32m  `muniDistrict` int(11) NOT NULL,[m
+[32m+[m[32m  `disCreated` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP[m
+[32m+[m[32m) ENGINE=InnoDB DEFAULT CHARSET=latin1;[m
+[32m+[m
+[32m+[m[32m--[m
+[32m+[m[32m-- Dumping data for table `district`[m
+[32m+[m[32m--[m
+[32m+[m
+[32m+[m[32mINSERT INTO `district` (`disId`, `disName`, `muniDistrict`, `disCreated`) VALUES[m
+[32m+[m[32m(1, 'DISTRICT 1', 1, '2019-03-11 17:19:13'),[m
+[32m+[m[32m(2, 'DISTRICT 2', 2, '2019-03-11 17:19:13'),[m
+[32m+[m[32m(3, 'DISTRICT 3', 3, '2019-03-11 17:19:13'),[m
+[32m+[m[32m(4, 'DISTRICT 4', 4, '2019-03-11 17:19:13');[m
+[32m+[m
+[32m+[m[32m-- --------------------------------------------------------[m
+[32m+[m
+[32m+[m[32m--[m
+[32m+[m[32m-- Table structure for table `download_file`[m
+[32m+[m[32m--[m
+[32m+[m
+[32m+[m[32mCREATE TABLE `download_file` ([m
+[32m+[m[32m  `download_id` int(11) NOT NULL,[m
+[32m+[m[32m  `dl_path` text NOT NULL,[m
+[32m+[m[32m  `dl_filename` text NOT NULL,[m
+[32m+[m[32m  `dl_file_status` int(11) NOT NULL,[m
+[32m+[m[32m  `dl_created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP[m
+[32m+[m[32m) ENGINE=InnoDB DEFAULT CHARSET=latin1;[m
+[32m+[m
+[32m+[m[32m-- --------------------------------------------------------[m
+[32m+[m
+[32m+[m[32m--[m
+[32m+[m[32m-- Table structure for table `facility`[m
+[32m+[m[32m--[m
+[32m+[m
+[32m+[m[32mCREATE TABLE `facility` ([m
+[32m+[m[32m  `facilityId` int(11) NOT NULL,[m
+[32m+[m[32m  `faCredenId` int(11) NOT NULL,[m
+[32m+[m[32m  `faPhoto` varchar(255) NOT NULL,[m
+[32m+[m[32m  `faName` varchar(150) NOT NULL,[m
+[32m+[m[32m  `faStatus` int(11) NOT NULL,[m
+[32m+[m[32m  `faCreated` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP[m
+[32m+[m[32m) ENGINE=InnoDB DEFAULT CHARSET=latin1;[m
+[32m+[m
+[32m+[m[32m-- --------------------------------------------------------[m
+[32m+[m
+[32m+[m[32m--[m
+[32m+[m[32m-- Table structure for table `fosterhome`[m
+[32m+[m[32m--[m
+[32m+[m
+[32m+[m[32mCREATE TABLE `fosterhome` ([m
+[32m+[m[32m  `fosterhomeId` int(11) NOT NULL,[m
+[32m+[m[32m  `fhName` varchar(150) NOT NULL,[m
+[32m+[m[32m  `fhAddress` varchar(255) NOT NULL,[m
+[32m+[m[32m  `fhDistrict` varchar(100) NOT NULL,[m
+[32m+[m[32m  `fhMunicipal` int(11) NOT NULL,[m
+[32m+[m[32m  `fmEmail` varchar(255) NOT NULL,[m
+[32m+[m[32m  `fhContact` varchar(15) NOT NULL,[m
+[32m+[m[32m  `fhUsername` varchar(150) NOT NULL,[m
+[32m+[m[32m  `fhPassword` text NOT NULL,[m
+[32m+[m[32m  `fhStatus` int(11) NOT NULL,[m
+[32m+[m[32m  `fhaccStatus` int(11) NOT NULL,[m
+[32m+[m[32m  `fhCreated` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP[m
+[32m+[m[32m) ENGINE=InnoDB DEFAULT CHARSET=latin1;[m
+[32m+[m
+[32m+[m[32m-- --------------------------------------------------------[m
+[32m+[m
+[32m+[m[32m--[m
+[32m+[m[32m-- Table structure for table `fosterparent`[m
+[32m+[m[32m--[m
+[32m+[m
+[32m+[m[32mCREATE TABLE `fosterparent` ([m
+[32m+[m[32m  `fosterparentId` int(11) NOT NULL,[m
+[32m+[m[32m  `fpCreadenId` int(11) NOT NULL,[m
+[32m+[m[32m  `fpFosterparentId` int(11) NOT NULL,[m
+[32m+[m[32m  `fpPtoho` varchar(255) NOT NULL,[m
+[32m+[m[32m  `fpFname` varchar(150) NOT NULL,[m
+[32m+[m[32m  `fpMname` varchar(150) NOT NULL,[m
+[32m+[m[32m  `fpLname` varchar(150) NOT NULL,[m
+[32m+[m[32m  `fpAge` int(5) NOT NULL,[m
+[32m+[m[32m  `fpBirthday` date NOT NULL,[m
+[32m+[m[32m  `fpGender` int(11) NOT NULL,[m
+[32m+[m[32m  `fpCivilStatus` int(11) NOT NULL,[m
+[32m+[m[32m  `fpContact` varchar(15) NOT NULL,[m
+[32m+[m[32m  `fpEmail` varchar(150) NOT NULL,[m
+[32m+[m[32m  `fpAddress` text NOT NULL,[m
+[32m+[m[32m  `fpChild` varchar(250) NOT NULL,[m
+[32m+[m[32m  `fpStatusAdopt` int(11) NOT NULL,[m
+[32m+[m[32m  `fpUsername` varchar(200) NOT NULL,[m
+[32m+[m[32m  `fpPassword` text NOT NULL,[m
+[32m+[m[32m  `fpStatus` int(11) NOT NULL,[m
+[32m+[m[32m  `fpAccountStatus` int(11) NOT NULL,[m
+[32m+[m[32m  `msgStatus` int(11) NOT NULL,[m
+[32m+[m[32m  `fpCreated` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP[m
+[32m+[m[32m) ENGINE=InnoDB DEFAULT CHARSET=latin1;[m
+[32m+[m
+[32m+[m[32m-- --------------------------------------------------------[m
+[32m+[m
+[32m+[m[32m--[m
+[32m+[m[32m-- Table structure for table `message`[m
+[32m+[m[32m--[m
+[32m+[m
+[32m+[m[32mCREATE TABLE `message` ([m
+[32m+[m[32m  `messageId` int(11) NOT NULL,[m
+[32m+[m[32m  `msgCredenId` int(11) NOT NULL,[m
+[32m+[m[32m  `msgFparentId` int(11) NOT NULL,[m
+[32m+[m[32m  `msgSendid` int(11) NOT NULL,[m
+[32m+[m[32m  `msgContent` text NOT NULL,[m
+[32m+[m[32m  `msgStatused` int(11) NOT NULL,[m
+[32m+[m[32m  `msgArchive` int(11) NOT NULL,[m
+[32m+[m[32m  `msgCreated` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP[m
+[32m+[m[32m) ENGINE=InnoDB DEFAULT CHARSET=latin1;[m
+[32m+[m
+[32m+[m[32m-- --------------------------------------------------------[m
+[32m+[m
+[32m+[m[32m--[m
+[32m+[m[32m-- Table structure for table `municipal`[m
+[32m+[m[32m--[m
+[32m+[m
+[32m+[m[32mCREATE TABLE `municipal` ([m
+[32m+[m[32m  `muniId` int(11) NOT NULL,[m
+[32m+[m[32m  `muniName` varchar(50) NOT NULL,[m
+[32m+[m[32m  `muniPostal` int(11) NOT NULL,[m
+[32m+[m[32m  `disId` int(11) NOT NULL,[m
+[32m+[m[32m  `muniCreated` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP[m
+[32m+[m[32m) ENGINE=InnoDB DEFAULT CHARSET=latin1;[m
+[32m+[m
+[32m+[m[32m--[m
+[32m+[m[32m-- Dumping data for table `municipal`[m
+[32m+[m[32m--[m
+[32m+[m
+[32m+[m[32mINSERT INTO `municipal` (`muniId`, `muniName`, `muniPostal`, `disId`, `muniCreated`) VALUES[m
+[32m+[m[32m(1, 'CITY OF BINAN', 4024, 1, '2019-03-11 17:27:57'),[m
+[32m+[m[32m(2, 'CITY OF SAN PEDRO', 4023, 1, '2019-03-11 17:08:52'),[m
+[32m+[m[32m(3, 'CITY OF SANTA ROSA', 4026, 1, '2019-03-11 17:08:52'),[m
+[32m+[m[32m(4, 'BAY', 4033, 2, '2019-03-11 17:09:57'),[m
+[32m+[m[32m(5, 'CABUYAO CITY', 4025, 2, '2019-03-11 17:09:57'),[m
+[32m+[m[32m(6, 'CITY OF CALAMBA', 4027, 2, '2019-03-11 17:09:57'),[m
+[32m+[m[32m(7, 'LOS BANOS', 4031, 2, '2019-03-11 17:28:06'),[m
+[32m+[m[32m(8, 'ALAMINOS', 4001, 3, '2019-03-11 17:11:35'),[m
+[32m+[m[32m(9, 'CALAUAN', 4012, 3, '2019-03-11 17:11:35'),[m
+[32m+[m[32m(10, 'LILIW', 4004, 3, '2019-03-11 17:11:35'),[m
+[32m+[m[32m(11, 'NAGCARLAN', 4002, 3, '2019-03-11 17:11:35'),[m
+[32m+[m[32m(12, 'RIZAL', 4003, 3, '2019-03-11 17:11:35'),[m
+[32m+[m[32m(13, 'SAN PABLO CITY', 4000, 3, '2019-03-11 17:11:35'),[m
+[32m+[m[32m(14, 'VICTORIA', 4011, 3, '2019-03-11 17:11:35'),[m
+[32m+[m[32m(15, 'CAVINTI', 4013, 4, '2019-03-11 17:15:43'),[m
+[32m+[m[32m(16, 'FAMY', 4021, 4, '2019-03-11 17:15:43'),[m
+[32m+[m[32m(17, 'KALAYAAN', 4015, 4, '2019-03-11 17:15:43'),[m
+[32m+[m[32m(18, 'LUISIANA', 4032, 4, '2019-03-11 17:15:43'),[m
+[32m+[m[32m(19, 'LUMBAN', 4014, 4, '2019-03-11 17:15:43'),[m
+[32m+[m[32m(20, 'MABITAC', 4020, 4, '2019-03-11 17:15:43'),[m
+[32m+[m[32m(21, 'MAGDALENA', 4007, 4, '2019-03-11 17:15:43'),[m
+[32m+[m[32m(22, 'MAJAYJAY', 4005, 4, '2019-03-11 17:15:43'),[m
+[32m+[m[32m(23, 'PAETE', 4016, 4, '2019-03-11 17:15:43'),[m
+[32m+[m[32m(24, 'PAGSANJAN', 4008, 4, '2019-03-11 17:15:43'),[m
+[32m+[m[32m(25, 'PAKIL', 4017, 4, '2019-03-11 17:15:43'),[m
+[32m+[m[32m(26, 'PANGIL', 4018, 4, '2019-03-11 17:15:43'),[m
+[32m+[m[32m(27, 'PILA', 4010, 4, '2019-03-11 17:15:43'),[m
+[32m+[m[32m(28, 'SANTA CRUZ', 4009, 4, '2019-03-11 17:15:43'),[m
+[32m+[m[32m(29, 'SANTA MARIA', 4022, 4, '2019-03-11 17:15:43'),[m
+[32m+[m[32m(30, 'SINILOAN', 4019, 4, '2019-03-11 17:15:43');[m
+[32m+[m
+[32m+[m[32m-- --------------------------------------------------------[m
+[32m+[m
+[32m+[m[32m--[m
+[32m+[m[32m-- Table structure for table `news`[m
+[32m+[m[32m--[m
+[32m+[m
+[32m+[m[32mCREATE TABLE `news` ([m
+[32m+[m[32m  `newsId` int(11) NOT NULL,[m
+[32m+[m[32m  `nwCredenId` int(11) NOT NULL,[m
+[32m+[m[32m  `nwPath` varchar(200) NOT NULL,[m
+[32m+[m[32m  `nwPhoto` varchar(150) NOT NULL,[m
+[32m+[m[32m  `nwDate` date NOT NULL,[m
+[32m+[m[32m  `nwTitle` text NOT NULL,[m
+[32m+[m[32m  `nwContent` text NOT NULL,[m
+[32m+[m[32m  `nwStatus` int(11) NOT NULL,[m
+[32m+[m[32m  `nwCreated` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP[m
+[32m+[m[32m) ENGINE=InnoDB DEFAULT CHARSET=latin1;[m
+[32m+[m
+[32m+[m[32m-- --------------------------------------------------------[m
+[32m+[m
+[32m+[m[32m--[m
+[32m+[m[32m-- Table structure for table `parent_report`[m
+[32m+[m[32m--[m
+[32m+[m
+[32m+[m[32mCREATE TABLE `parent_report` ([m
+[32m+[m[32m  `parent_report_id` int(11) NOT NULL,[m
+[32m+[m[32m  `prFosterparentId` int(11) NOT NULL,[m
+[32m+[m[32m  `prChildrenId` int(11) NOT NULL,[m
+[32m+[m[32m  `prPath` text NOT NULL,[m
+[32m+[m[32m  `prPhotoname` varchar(200) NOT NULL,[m
+[32m+[m[32m  `prDescription` text NOT NULL,[m
+[32m+[m[32m  `prCreated` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP[m
+[32m+[m[32m) ENGINE=InnoDB DEFAULT CHARSET=latin1;[m
+[32m+[m
+[32m+[m[32m-- --------------------------------------------------------[m
+[32m+[m
+[32m+[m[32m--[m
+[32m+[m[32m-- Table structure for table `reportcare`[m
+[32m+[m[32m--[m
+[32m+[m
+[32m+[m[32mCREATE TABLE `reportcare` ([m
+[32m+[m[32m  `reportCareId` int(11) NOT NULL,[m
+[32m+[m[32m  `rcfosterHomeid` int(11) NOT NULL,[m
+[32m+[m[32m  `rcfilePath` varchar(255) NOT NULL,[m
+[32m+[m[32m  `rcfileName` varchar(150) NOT NULL,[m
+[32m+[m[32m  `rsTitile` varchar(200) NOT NULL,[m
+[32m+[m[32m  `rcCreated` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP[m
+[32m+[m[32m) ENGINE=InnoDB DEFAULT CHARSET=latin1;[m
+[32m+[m
+[32m+[m[32m-- --------------------------------------------------------[m
+[32m+[m
+[32m+[m[32m--[m
+[32m+[m[32m-- Table structure for table `video`[m
+[32m+[m[32m--[m
+[32m+[m
+[32m+[m[32mCREATE TABLE `video` ([m
+[32m+[m[32m  `video_id` int(11) NOT NULL,[m
+[32m+[m[32m  `video_path` text NOT NULL,[m
+[32m+[m[32m  `video_name` text NOT NULL,[m
+[32m+[m[32m  `video_title` text NOT NULL,[m
+[32m+[m[32m  `video_created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP[m
+[32m+[m[32m) ENGINE=InnoDB DEFAULT CHARSET=latin1;[m
+[32m+[m
+[32m+[m[32m-- --------------------------------------------------------[m
+[32m+[m
+[32m+[m[32m--[m
+[32m+[m[32m-- Table structure for table `y_video`[m
+[32m+[m[32m--[m
+[32m+[m
+[32m+[m[32mCREATE TABLE `y_video` ([m
+[32m+[m[32m  `y_video_id` int(11) NOT NULL,[m
+[32m+[m[32m  `y_video_link` text NOT NULL,[m
+[32m+[m[32m  `y_video_title` varchar(255) NOT NULL,[m
+[32m+[m[32m  `y_archive` int(11) NOT NULL,[m
+[32m+[m[32m  `y_created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP[m
+[32m+[m[32m) ENGINE=InnoDB DEFAULT CHARSET=latin1;[m
+[32m+[m
+[32m+[m[32m--[m
+[32m+[m[32m-- Indexes for dumped tables[m
+[32m+[m[32m--[m
+[32m+[m
+[32m+[m[32m--[m
+[32m+[m[32m-- Indexes for table `children`[m
+[32m+[m[32m--[m
+[32m+[m[32mALTER TABLE `children`[m
+[32m+[m[32m  ADD PRIMARY KEY (`childrenId`);[m
+[32m+[m
+[32m+[m[32m--[m
+[32m+[m[32m-- Indexes for table `children_adopt_by_parent`[m
+[32m+[m[32m--[m
+[32m+[m[32mALTER TABLE `children_adopt_by_parent`[m
+[32m+[m[32m  ADD PRIMARY KEY (`adopt_id`);[m
+[32m+[m
+[32m+[m[32m--[m
+[32m+[m[32m-- Indexes for table `childstatus`[m
+[32m+[m[32m--[m
+[32m+[m[32mALTER TABLE `childstatus`[m
+[32m+[m[32m  ADD PRIMARY KEY (`childstatusId`);[m
+[32m+[m
+[32m+[m[32m--[m
+[32m+[m[32m-- Indexes for table `credentials`[m
+[32m+[m[32m--[m
+[32m+[m[32mALTER TABLE `credentials`[m
+[32m+[m[32m  ADD PRIMARY KEY (`credenId`);[m
+[32m+[m
+[32m+[m[32m--[m
+[32m+[m[32m-- Indexes for table `district`[m
+[32m+[m[32m--[m
+[32m+[m[32mALTER TABLE `district`[m
+[32m+[m[32m  ADD PRIMARY KEY (`disId`);[m
+[32m+[m
+[32m+[m[32m--[m
+[32m+[m[32m-- Indexes for table `download_file`[m
+[32m+[m[32m--[m
+[32m+[m[32mALTER TABLE `download_file`[m
+[32m+[m[32m  ADD PRIMARY KEY (`download_id`);[m
+[32m+[m
+[32m+[m[32m--[m
+[32m+[m[32m-- Indexes for table `facility`[m
+[32m+[m[32m--[m
+[32m+[m[32mALTER TABLE `facility`[m
+[32m+[m[32m  ADD PRIMARY KEY (`facilityId`);[m
+[32m+[m
+[32m+[m[32m--[m
+[32m+[m[32m-- Indexes for table `fosterhome`[m
+[32m+[m[32m--[m
+[32m+[m[32mALTER TABLE `fosterhome`[m
+[32m+[m[32m  ADD PRIMARY KEY (`fosterhomeId`);[m
+[32m+[m
+[32m+[m[32m--[m
+[32m+[m[32m-- Indexes for table `fosterparent`[m
+[32m+[m[32m--[m
+[32m+[m[32mALTER TABLE `fosterparent`[m
+[32m+[m[32m  ADD PRIMARY KEY (`fosterparentId`);[m
+[32m+[m
+[32m+[m[32m--[m
+[32m+[m[32m-- Indexes for table `message`[m
+[32m+[m[32m--[m
+[32m+[m[32mALTER TABLE `message`[m
+[32m+[m[32m  ADD PRIMARY KEY (`messageId`);[m
+[32m+[m
+[32m+[m[32m--[m
+[32m+[m[32m-- Indexes for table `municipal`[m
+[32m+[m[32m--[m
+[32m+[m[32mALTER TABLE `municipal`[m
+[32m+[m[32m  ADD PRIMARY KEY (`muniId`);[m
+[32m+[m
+[32m+[m[32m--[m
+[32m+[m[32m-- Indexes for table `news`[m
+[32m+[m[32m--[m
+[32m+[m[32mALTER TABLE `news`[m
+[32m+[m[32m  ADD PRIMARY KEY (`newsId`);[m
+[32m+[m
+[32m+[m[32m--[m
+[32m+[m[32m-- Indexes for table `parent_report`[m
+[32m+[m[32m--[m
+[32m+[m[32mALTER TABLE `parent_report`[m
+[32m+[m[32m  ADD PRIMARY KEY (`parent_report_id`);[m
+[32m+[m
+[32m+[m[32m--[m
+[32m+[m[32m-- Indexes for table `reportcare`[m
+[32m+[m[32m--[m
+[32m+[m[32mALTER TABLE `reportcare`[m
+[32m+[m[32m  ADD PRIMARY KEY (`reportCareId`);[m
+[32m+[m
+[32m+[m[32m--[m
+[32m+[m[32m-- Indexes for table `video`[m
+[32m+[m[32m--[m
+[32m+[m[32mALTER TABLE `video`[m
+[32m+[m[32m  ADD PRIMARY KEY (`video_id`);[m
+[32m+[m
+[32m+[m[32m--[m
+[32m+[m[32m-- Indexes for table `y_video`[m
+[32m+[m[32m--[m
+[32m+[m[32mALTER TABLE `y_video`[m
+[32m+[m[32m  ADD PRIMARY KEY (`y_video_id`);[m
+[32m+[m
+[32m+[m[32m--[m
+[32m+[m[32m-- AUTO_INCREMENT for dumped tables[m
+[32m+[m[32m--[m
+[32m+[m
+[32m+[m[32m--[m
+[32m+[m[32m-- AUTO_INCREMENT for table `children`[m
+[32m+[m[32m--[m
+[32m+[m[32mALTER TABLE `children`[m
+[32m+[m[32m  MODIFY `childrenId` int(11) NOT NULL AUTO_INCREMENT;[m
+[32m+[m
+[32m+[m[32m--[m
+[32m+[m[32m-- AUTO_INCREMENT for table `children_adopt_by_parent`[m
+[32m+[m[32m--[m
+[32m+[m[32mALTER TABLE `children_adopt_by_parent`[m
+[32m+[m[32m  MODIFY `adopt_id` int(11) NOT NULL AUTO_INCREMENT;[m
+[32m+[m
+[32m+[m[32m--[m
+[32m+[m[32m-- AUTO_INCREMENT for table `childstatus`[m
+[32m+[m[32m--[m
+[32m+[m[32mALTER TABLE `childstatus`[m
+[32m+[m[32m  MODIFY `childstatusId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;[m
+[32m+[m
+[32m+[m[32m--[m
+[32m+[m[32m-- AUTO_INCREMENT for table `credentials`[m
+[32m+[m[32m--[m
+[32m+[m[32mALTER TABLE `credentials`[m
+[32m+[m[32m  MODIFY `credenId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;[m
+[32m+[m
+[32m+[m[32m--[m
+[32m+[m[32m-- AUTO_INCREMENT for table `district`[m
+[32m+[m[32m--[m
+[32m+[m[32mALTER TABLE `district`[m
+[32m+[m[32m  MODIFY `disId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;[m
+[32m+[m
+[32m+[m[32m--[m
+[32m+[m[32m-- AUTO_INCREMENT for table `download_file`[m
+[32m+[m[32m--[m
+[32m+[m[32mALTER TABLE `download_file`[m
+[32m+[m[32m  MODIFY `download_id` int(11) NOT NULL AUTO_INCREMENT;[m
+[32m+[m
+[32m+[m[32m--[m
+[32m+[m[32m-- AUTO_INCREMENT for table `facility`[m
+[32m+[m[32m--[m
+[32m+[m[32mALTER TABLE `facility`[m
+[32m+[m[32m  MODIFY `facilityId` int(11) NOT NULL AUTO_INCREMENT;[m
+[32m+[m
+[32m+[m[32m--[m
+[32m+[m[32m-- AUTO_INCREMENT for table `fosterhome`[m
+[32m+[m[32m--[m
+[32m+[m[32mALTER TABLE `fosterhome`[m
+[32m+[m[32m  MODIFY `fosterhomeId` int(11) NOT NULL AUTO_INCREMENT;[m
+[32m+[m
+[32m+[m[32m--[m
+[32m+[m[32m-- AUTO_INCREMENT for table `fosterparent`[m
+[32m+[m[32m--[m
+[32m+[m[32mALTER TABLE `fosterparent`[m
+[32m+[m[32m  MODIFY `fosterparentId` int(11) NOT NULL AUTO_INCREMENT;[m
+[32m+[m
+[32m+[m[32m--[m
+[32m+[m[32m-- AUTO_INCREMENT for table `message`[m
+[32m+[m[32m--[m
+[32m+[m[32mALTER TABLE `message`[m
+[32m+[m[32m  MODIFY `messageId` int(11) NOT NULL AUTO_INCREMENT;[m
+[32m+[m
+[32m+[m[32m--[m
+[32m+[m[32m-- AUTO_INCREMENT for table `municipal`[m
+[32m+[m[32m--[m
+[32m+[m[32mALTER TABLE `municipal`[m
+[32m+[m[32m  MODIFY `muniId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;[m
+[32m+[m
+[32m+[m[32m--[m
+[32m+[m[32m-- AUTO_INCREMENT for table `news`[m
+[32m+[m[32m--[m
+[32m+[m[32mALTER TABLE `news`[m
+[32m+[m[32m  MODIFY `newsId` int(11) NOT NULL AUTO_INCREMENT;[m
+[32m+[m
+[32m+[m[32m--[m
+[32m+[m[32m-- AUTO_INCREMENT for table `parent_report`[m
+[32m+[m[32m--[m
+[32m+[m[32mALTER TABLE `parent_report`[m
+[32m+[m[32m  MODIFY `parent_report_id` int(11) NOT NULL AUTO_INCREMENT;[m
+[32m+[m
+[32m+[m[32m--[m
+[32m+[m[32m-- AUTO_INCREMENT for table `reportcare`[m
+[32m+[m[32m--[m
+[32m+[m[32mALTER TABLE `reportcare`[m
+[32m+[m[32m  MODIFY `reportCareId` int(11) NOT NULL AUTO_INCREMENT;[m
+[32m+[m
+[32m+[m[32m--[m
+[32m+[m[32m-- AUTO_INCREMENT for table `video`[m
+[32m+[m[32m--[m
+[32m+[m[32mALTER TABLE `video`[m
+[32m+[m[32m  MODIFY `video_id` int(11) NOT NULL AUTO_INCREMENT;[m
+[32m+[m
+[32m+[m[32m--[m
+[32m+[m[32m-- AUTO_INCREMENT for table `y_video`[m
+[32m+[m[32m--[m
+[32m+[m[32mALTER TABLE `y_video`[m
+[32m+[m[32m  MODIFY `y_video_id` int(11) NOT NULL AUTO_INCREMENT;[m
+[32m+[m[32mCOMMIT;[m
+[32m+[m
+[32m+[m[32m/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;[m
+[32m+[m[32m/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;[m
+[32m+[m[32m/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;[m

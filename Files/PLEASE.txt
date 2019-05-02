@@ -1,0 +1,50 @@
+foster care 
+
+* pag nag add ng foster parent tapos halimbawa is nilgay na natin dun sa
+status adopt ay permanent , automatic dapat yung status ng bata ay adopted na hindi na sya
+nakalagay sa list ng possible adoptess.
+
+* pag inarchived yung convo , tapos pag nag create message ka hindi na 
+nalabas yung name ng foster parent dun sa select foster parent na 
+drop down.
+
+* mali yung send report to pswdo dapat dswd
+
+* pag inarchived yung news hindi nawawala sa home page
+
+* pag ka click ng edit sa foster parent list lalagyan ng button ng add 
+kung gusto nya pa mag dagdag ng bata na aampunin o aalagaan
+
+
+DSWD
+
+* example pag ka click ng district 4 dapat yung lalabas sa drop down para 
+sa municipal is disrict 4 lang
+
+* manage downloadable files / sya nag uupload ng mga pwedeng idownload dun
+sa downloads na button
+
+* sa link path finder pa din tapos dapat dswd hindi pswdo
+
+
+Home page / my account
+
+* hindi pa ayos yung message pati yung design kase naka display agad
+
+* hindi pa nakakapag send ng report
+
+* ipapasa namen yung mga goverment links para may ma ilagay na dun
+
+* desig ng home page / mag eedit kame ng mga picture para may slideshow tayo 
+sa home
+
+* pag naka zoom out napakalaki ng picture kahit malayo na.
+
+* table ng news aayusin pa 
+
+
+ANALYTICS para sa lahat ng user level hindi pa nag soshow .
+PATHFINDER aalisin nayan sa lahat ng module / pati yung mga link
+SECURITY ng data para database 
+
+MEDYO AYOS NA TAYO SA BACK END NA MGA DESIGN , SA FRONT END NALANG.

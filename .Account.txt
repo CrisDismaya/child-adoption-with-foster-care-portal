@@ -1,0 +1,14 @@
+Pswdo Account.
+Username : dswd
+Password : dswd
+
+Pending.
+Foster Care
+ - analytics
+
+website
+ - Sending File
+ - search bar gagawin
+
+ search
+  - hide the path folder using htaccess
