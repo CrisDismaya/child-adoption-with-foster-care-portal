@@ -4,6 +4,6 @@
 	unset($_SESSION['credenID']);
 	session_destroy();  
 	
-	header("Location: /Adoption/account/index.php");
-	die("Redirecting to: /Adoption/account/index"); 
+	header("Location: /account/index.php");
+	die("Redirecting to: /account/index"); 
 ?>
