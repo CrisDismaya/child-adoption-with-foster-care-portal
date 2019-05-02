@@ -5,7 +5,7 @@
 <head>
 	<?php include 'includes/head.php'; ?>
 </head>
-	<?php include 'sql/fosterparent.php'; ?>
+	<?php include 'sql/fosterParent.php'; ?>
 <body>
 	<?php include 'navigation.php'; ?>
 	<?php 

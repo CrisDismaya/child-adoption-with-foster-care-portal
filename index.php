@@ -149,9 +149,7 @@
 										$new_y_created = date("F  d, Y", strtotime($y_created));
 										?>
 										<div class="col-lg-4 col-md-6 col-xs-12" style="text-align:center;">
-											<object width="100%" height="200" data="<?php echo $y_video_link; ?>" type="application/x-shockwave-flash">
-												<param name="src" value="<?php echo $y_video_link; ?>" />
-											</object>
+											<object width="100%" height="200" data="<?php echo $y_video_link; ?>"></object>
 											<span style="font-size: 15px;"><i><b><?php echo $y_title; ?></b></i></span>
 										</div>
 										<?php

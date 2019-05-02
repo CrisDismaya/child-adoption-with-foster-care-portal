@@ -51,9 +51,7 @@
 											$titles = $y_row['y_video_title'];
 											?>
 											<div class="col-md-4" style="text-align: center;">
-												<object width="100%" data="<?php echo $links; ?>" type="application/x-shockwave-flash">
-													<param name="src" value="<?php echo $links; ?>" />
-												</object>
+												<object width="100%" height="200" data="<?php echo $y_video_link; ?>"></object>
 												<span style="font-size: 20px;"><b><?php echo $titles; ?></b></span>
 
 												<a href="#y_achive<?php echo $id; ?>" class="btn btn-danger" data-toggle="modal" style="width:100%;">

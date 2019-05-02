@@ -1,5 +1,5 @@
 <?php
-    require("security/common.php");
+    require("common.php");
    
     if(empty($_SESSION['credenId']))
     {
