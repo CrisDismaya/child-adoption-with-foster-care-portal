@@ -1,5 +1,5 @@
 <?php
-$con = mysqli_connect("localhost","u270883250_adopt","b0YoBhJwjioE","u270883250_adopt");
+$con = mysqli_connect("localhost","root","","db_postercare");
 // Check connection
 
 if (mysqli_connect_errno())

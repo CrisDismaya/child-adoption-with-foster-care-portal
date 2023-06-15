@@ -1,8 +1,8 @@
 <?php
     $username = "root";
-    $password = "";
+    $password = ""; // 3778eb2c406f5b97
     $host = "localhost";
-    $dbname = "path_finder";
+    $dbname = "db_postercare";
 	
     $options = array(PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8');
     try
